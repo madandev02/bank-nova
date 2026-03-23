@@ -14,8 +14,6 @@ This project demonstrates:
 - Automated testing and CI quality gates
 - Dockerized local environment and deploy-ready structure
 
-This is a strong project for junior full-stack interviews, especially when paired with a second project in a different domain.
-
 ## Architecture
 
 - Frontend: React, TypeScript, Vite, Material UI
