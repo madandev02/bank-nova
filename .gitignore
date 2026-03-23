@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+*.jar
+*.war
+*.ear
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Build outputs
+backend/target/
+frontend/dist/
+frontend/build/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database
+postgres_data/
+
+# Logs
+logs/
+*.log
+
+# Docker
+.dockerignore
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Temporary files
+*.tmp
+*.temp

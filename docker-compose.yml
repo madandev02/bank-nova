@@ -1,0 +1,65 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: banknova-postgres
+    environment:
+      POSTGRES_DB: banknova
+      POSTGRES_USER: banknova_user
+      POSTGRES_PASSWORD: banknova_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - banknova-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U banknova_user -d banknova"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: banknova-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/banknova
+      SPRING_DATASOURCE_USERNAME: banknova_user
+      SPRING_DATASOURCE_PASSWORD: banknova_password
+      JWT_SECRET: banknova_jwt_secret_key_for_development_only_not_for_production_with_minimum_length_64_chars
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - banknova-network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api
+    container_name: banknova-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - banknova-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  banknova-network:
+    driver: bridge
