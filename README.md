@@ -87,13 +87,3 @@ This recreates PostgreSQL data and re-seeds demo records.
 
 - Frontend guide: [frontend/README.md](frontend/README.md)
 - Backend guide: [backend/README.md](backend/README.md)
-
-## Interview Positioning
-
-In interviews, present BankNova as:
-
-- A secure transaction-focused product, not just a CRUD demo
-- Evidence of debugging and iterative hardening
-- Proof of test-driven quality and deployment readiness
-
-A second project with strong backend domain logic (like healthcare scheduling with anti-double-booking) will elevate your profile to strong junior or junior-plus.
