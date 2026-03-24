@@ -1,80 +1,150 @@
 # BankNova Frontend
 
-Frontend application for BankNova built with React and TypeScript.
+Modern digital banking frontend built with React and TypeScript.
+This application provides a secure and responsive user experience for authentication, transactions, analytics, and wallet management.
 
-## Purpose
+---
 
-The frontend delivers a modern digital-banking experience with secure session handling, transfer workflows, transaction history, and analytics views.
+## 🚀 Key Features
 
-## Stack
+* 🔐 Secure authentication flows (login, register, protected routes)
+* 💾 Session & persistent token handling ("remember me")
+* 📊 Dashboard with balance insights and analytics summaries
+* 💸 Transfer flow with beneficiary helper and fee preview
+* 📜 Transaction history with status mapping
+* 🎨 Responsive UI with modern glassmorphism banking design
 
-- React 18
-- TypeScript
-- Vite
-- Material UI
-- Axios
-- React Router
-- Vitest + Testing Library
+---
 
-## Core Features
+## 🧠 Architecture
 
-- Authentication flows (register, login, protected routes)
-- Session/persistent token handling (remember me)
-- Dashboard with balance and analytics summaries
-- Transfer flow with beneficiary helper and fee preview
-- Transaction history and status mapping
-- Responsive UI with glassmorphism banking style
+Component-based architecture with clear separation of concerns:
 
-## Security-Relevant Frontend Practices
+* Pages → user flows and screens
+* Components → reusable UI elements
+* API layer → Axios client and endpoint abstraction
+* Context → global state (auth, theme)
+* Utils → helpers, constants, formatting
 
-- Authorization header injection via Axios interceptor
-- Automatic unauthorized handling and redirect flow
-- Token storage strategy supporting session and persistent modes
-- Defensive API response normalization for robustness
+---
 
-## Local Development
+## 🛠️ Tech Stack
 
-1. Install dependencies
-   - `npm ci`
-2. Start dev server
-   - `npm run dev`
+* React 18
+* TypeScript
+* Vite
+* Material UI
+* Axios
+* React Router
+* Vitest + Testing Library
 
-The dev server proxies `/api` requests to `http://localhost:8080` via `vite.config.ts`, so `.env.local` is optional.
-If needed, you can still override with `VITE_API_URL`.
+---
 
-## Quality Commands
+## 🔐 Security Practices
 
-- Run tests: `npm run test -- --run`
-- Build production bundle: `npm run build`
-- Lint: `npm run lint`
+* Authorization header injection via Axios interceptor
+* Automatic handling of unauthorized responses (redirect flow)
+* Token storage strategy (session + persistent modes)
+* Defensive API response normalization for robustness
 
-## Key Folders
+---
 
-- `src/pages` user flows and screens
-- `src/components` reusable UI components
-- `src/api` API client and endpoint wrappers
-- `src/utils` auth helpers, constants, formatting
-- `src/context` auth/theme app-level state
+## ▶️ Local Development
 
-## Integration Contract
+### 1. Install dependencies
 
-Expected API base in app runtime:
+```bash
+npm ci
+```
 
-- `/api` (proxied by Vite in development and Nginx in Docker)
+### 2. Start development server
 
-Primary API groups used:
+```bash
+npm run dev
+```
 
-- `/api/v1/auth/*`
-- `/api/v1/transactions/*`
-- `/api/v1/user/*`
-- `/api/v1/wallet/*`
+The dev server proxies `/api` requests to `http://localhost:8080` via `vite.config.ts`.
 
-Backend docs reference:
+You can optionally override with:
 
-- Correct Swagger UI path is `/swagger-ui.html` (for example: `https://banknova-api.onrender.com/swagger-ui.html`).
+```bash
+VITE_API_URL=your_api_url
+```
 
-## Interview Talking Points
+---
 
-- How API response mapping isolates UI from backend DTO changes
-- Why token storage supports both session and remember-me behavior
-- How frontend tests protect critical auth and form flows
+## 🧪 Quality Commands
+
+* Run tests:
+
+```bash
+npm run test -- --run
+```
+
+* Build production bundle:
+
+```bash
+npm run build
+```
+
+* Lint:
+
+```bash
+npm run lint
+```
+
+---
+
+## 📁 Project Structure
+
+* `src/pages` → user flows and screens
+* `src/components` → reusable UI components
+* `src/api` → API client and endpoint wrappers
+* `src/utils` → auth helpers, constants, formatting
+* `src/context` → global app state (auth, theme)
+
+---
+
+## 🔗 API Integration
+
+Expected API base path:
+
+```bash
+/api
+```
+
+(Handled via proxy in development and Nginx in Docker)
+
+### Main API groups:
+
+* `/api/v1/auth/*`
+* `/api/v1/transactions/*`
+* `/api/v1/user/*`
+* `/api/v1/wallet/*`
+
+📄 Backend Swagger reference:
+`/swagger-ui.html`
+Example: https://banknova-api.onrender.com/swagger-ui.html
+
+---
+
+## 🎯 Technical Decisions
+
+* **API abstraction layer** → isolates UI from backend DTO changes
+* **Token storage strategy** → supports both session and "remember me" flows
+* **Axios interceptors** → centralize auth handling and error flows
+* **Component modularization** → improves scalability and maintainability
+* **Frontend testing strategy** → protects critical auth and form flows
+
+---
+
+## 💡 Purpose
+
+This project was developed as part of a fullstack portfolio to simulate a real-world digital banking frontend, focusing on security, UX, and clean architecture using React and TypeScript.
+
+---
+
+## 🌐 Related
+
+Frontend deployed on Vercel
+Backend deployed on Render
