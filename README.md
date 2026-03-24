@@ -70,6 +70,39 @@ Notes:
    - Transfer (with optional email OTP verification)
    - Features page (cards, beneficiaries, spending limits, loans)
 
+## Render Backend Deployment (Production-Style)
+
+Create resources in this order:
+
+1. Render Postgres
+2. Render Web Service (backend)
+3. Vercel frontend (after backend is live)
+
+For Render Web Service, use:
+
+- Root directory: `backend`
+- Runtime: `Docker`
+- Branch: `main`
+
+Set these environment variables in Render Web Service:
+
+- `SPRING_PROFILES_ACTIVE=docker`
+- `SPRING_DATASOURCE_URL=jdbc:postgresql://<host>:5432/<database>`
+- `SPRING_DATASOURCE_USERNAME=<db_user>`
+- `SPRING_DATASOURCE_PASSWORD=<db_password>`
+- `JWT_SECRET=<64+ character random secret>`
+- `CORS_ALLOWED_ORIGINS=http://localhost:3000` (update to include Vercel URL after frontend deploy)
+- `SERVER_PORT=10000` (Render-friendly explicit port)
+
+After frontend deployment, update CORS:
+
+- `CORS_ALLOWED_ORIGINS=https://<your-vercel-url>,http://localhost:3000`
+
+Health / verification endpoints:
+
+- `https://<backend-url>/api/health`
+- `https://<backend-url>/swagger-ui.html`
+
 ## Database Refresh (Optional)
 
 If your local database is old and you want a clean demo state:
