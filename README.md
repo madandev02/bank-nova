@@ -92,7 +92,8 @@ Set these environment variables in Render Web Service:
 - `SPRING_DATASOURCE_PASSWORD=<db_password>`
 - `JWT_SECRET=<64+ character random secret>`
 - `CORS_ALLOWED_ORIGINS=http://localhost:3000` (update to include Vercel URL after frontend deploy)
-- `SERVER_PORT=10000` (Render-friendly explicit port)
+
+Render sets `PORT` automatically. The backend now reads that value directly.
 
 After frontend deployment, update CORS:
 
