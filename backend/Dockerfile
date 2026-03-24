@@ -7,6 +7,9 @@ WORKDIR /app
 COPY mvnw mvnw.cmd pom.xml ./
 COPY .mvn .mvn
 
+# Ensure wrapper is executable and Unix-compatible in Linux build environments
+RUN sed -i 's/\r$//' mvnw && chmod +x mvnw
+
 # Download dependencies (this layer will be cached if pom.xml doesn't change)
 RUN ./mvnw dependency:go-offline -B
 
