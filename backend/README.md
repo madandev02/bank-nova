@@ -49,6 +49,12 @@ This service exposes secure REST APIs for authentication, wallet operations, tra
 3. Swagger
    - `http://localhost:8080/swagger-ui.html`
 
+Swagger note:
+
+- Correct UI endpoint: `/swagger-ui.html`
+- API docs endpoint: `/api-docs`
+- `/swagger-ui/index.html` may not work behind some proxies.
+
 ## Build
 
 - Package jar: `./mvnw clean package`

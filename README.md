@@ -43,6 +43,11 @@ Implemented controls include:
 4. API docs
    - http://localhost:8080/swagger-ui.html
 
+Swagger note:
+
+- Correct path: `/swagger-ui.html`
+- `/swagger-ui/index.html` can fail depending on reverse proxy/static routing setup.
+
 ## Demo Accounts
 
 Use the following seeded credentials to sign in immediately after startup.

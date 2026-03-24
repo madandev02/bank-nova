@@ -69,6 +69,10 @@ Primary API groups used:
 - `/api/v1/user/*`
 - `/api/v1/wallet/*`
 
+Backend docs reference:
+
+- Correct Swagger UI path is `/swagger-ui.html` (for example: `https://banknova-api.onrender.com/swagger-ui.html`).
+
 ## Interview Talking Points
 
 - How API response mapping isolates UI from backend DTO changes
