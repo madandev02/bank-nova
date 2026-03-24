@@ -4,6 +4,8 @@ BankNova is a full-stack digital banking simulation built to demonstrate product
 
 It focuses on secure authentication, money transfer workflows, analytics, and a polished user experience across frontend and backend.
 
+Live demo: https://bank-nova.vercel.app/
+
 ## Portfolio Value
 
 This project demonstrates:
